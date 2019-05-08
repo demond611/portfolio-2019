@@ -13,8 +13,6 @@
 
 # misc
 .DS_Store
-# added .htaccess
-.htaccess
 # added .env
 .env
 .env.local
