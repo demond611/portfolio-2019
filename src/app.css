@@ -1,0 +1,116 @@
+/* Custom styling */
+
+body {
+  font-size: 1.3rem !important;
+}
+
+/* Container */
+.full-container {
+  padding: 0;
+}
+
+
+/* Footer...Nav */
+footer {
+  margin-top: 4em;
+}
+footer .ui.container, header .ui.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  height: 6em;
+}
+
+footer ul, header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline-flex;
+}
+
+footer ul li:not(:first-child), header ul li:not(:first-child) {
+  margin-left: 2em;
+}
+
+footer ul li {
+  cursor: pointer;
+}
+
+
+/* Anchor */
+a, a:hover, a:active, a:focus {
+  text-decoration: none;
+  padding-bottom: .20em;
+}
+
+a {
+  color: inherit;
+  border-bottom: 1px solid transparent;
+  transition: all .3s ease-in-out;
+}
+
+a:hover, a:active, a:focus {
+  color: #006aff;
+  border-bottom: 1px solid #006aff;
+}
+
+.ui.items >.item .extra > a {
+  margin: 0;
+}
+
+
+/* Images */
+.ui.items>.item>.image:not(.ui) {
+  width: auto;
+}
+
+
+/* Links */
+.extraLink {
+  color: initial;
+}
+
+
+/* About */
+.about-block .ui.segment {
+  box-shadow: none;
+  border: none;
+  padding-left: 0;
+}
+
+.ui.segment {
+  font-size: initial;
+}
+
+.ui.progress:last-child {
+  margin: 0;
+}
+
+
+/* Contact */
+.ui.grid > .row, .ui.grid > * {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+
+/* Home Page */
+.ui.divided.items > .item {
+  padding: 4em 0;
+}
+
+.ui.items > .item > .image {
+  transition: transform .5s ease-in-out;
+}
+
+.ui.items > .item > .image:hover {
+  transform: scale(1.1);
+}
+
+.ui.items > .item {
+  overflow: hidden;
+}
