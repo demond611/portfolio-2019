@@ -61,7 +61,8 @@ class Contact extends Component {
     event.preventDefault();
 
     const {
-      REACT_APP_EMAILJS_TEMPLATEID: template
+      REACT_APP_EMAILJS_TEMPLATEID: template,
+      REACT_APP_EMAILJS_USERID: user
     } = process.env;
 
     this.sendFeedback(
@@ -69,6 +70,7 @@ class Contact extends Component {
       this.state.fullName,
       this.state.email,
       this.state.message,
+      user,
       this.setState(this.initialState),
       this.setState({ showModal: true })
     );
@@ -112,11 +114,12 @@ class Contact extends Component {
     });
   }
 
-  sendFeedback (templateID, senderName, senderEmail, message){
+  sendFeedback (templateID, senderName, senderEmail, message, userID){
     window.emailjs.send(
       'mailgun',
       templateID,
-      { senderName, senderEmail, message }
+      { senderName, senderEmail, message },
+      userID
     ).then (response => {
       console.log('SUCCESS!', response.status, response.text);
     }, (error) => {
