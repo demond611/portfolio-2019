@@ -71,8 +71,7 @@ class Contact extends Component {
       this.state.email,
       this.state.message,
       user,
-      this.setState(this.initialState),
-      this.setState({ showModal: true })
+      this.setState(this.initialState)
     );
   }
 
@@ -122,7 +121,8 @@ class Contact extends Component {
       userID
     ).then (response => {
       console.log('SUCCESS!', response.status, response.text);
-    }, (error) => {
+      this.setState({ showModal: true })
+    },(error) => {
       console.log('FAILED...', error);
     });
   }
