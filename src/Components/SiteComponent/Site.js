@@ -1,37 +1,43 @@
-import React from 'react';
+import React from     'react';
 import {
   Grid,
   Header,
   Label,
   Image
-} from 'semantic-ui-react';
+} from                'semantic-ui-react';
+import { Link } from  'react-router-dom';
 
-import ena_1 from './ena_1.png';
-import ena_2 from './ena_2.png';
-import ena_3 from './ena_3.png';
-import apic_1 from './apic_1.png';
-import apic_2 from './apic_2.png';
-import apic_3 from './apic_3.png';
-import apic_4 from './apic_4.png';
-import apic_5 from './apic_5.png';
-import ufpa_1 from './ufpa_1.png';
-import ufpa_2 from './ufpa_2.png';
-import ufpa_3 from './ufpa_3.png';
-import ufpa_4 from './ufpa_4.png';
-import travel_1 from './travel_1.png';
-import travel_2 from './travel_2.png';
-import travel_3 from './travel_3.png';
-import infoc_1 from './infoc_1.png';
-import infoc_2 from './infoc_2.png';
-import infoc_3 from './infoc_3.png';
-import infoc_4 from './infoc_4.png';
+import ena_1 from     './ena_1.png';
+import ena_2 from     './ena_2.png';
+import ena_3 from     './ena_3.png';
+import apic_1 from    './apic_1.png';
+import apic_2 from    './apic_2.png';
+import apic_3 from    './apic_3.png';
+import apic_4 from    './apic_4.png';
+import apic_5 from    './apic_5.png';
+import ufpa_1 from    './ufpa_1.png';
+import ufpa_2 from    './ufpa_2.png';
+import ufpa_3 from    './ufpa_3.png';
+import ufpa_4 from    './ufpa_4.png';
+import travel_1 from  './travel_1.png';
+import travel_2 from  './travel_2.png';
+import travel_3 from  './travel_3.png';
+import infoc_1 from   './infoc_1.png';
+import infoc_2 from   './infoc_2.png';
+import infoc_3 from   './infoc_3.png';
+import infoc_4 from   './infoc_4.png';
 
 const style = {
   h2: {
-    margin: '4em 0 0',
+    margin: '4em 0 0'
+  },
+  backButton: {
+    fontSize: '.85em',
+    fontWeight: '600',
+    textAlign: 'center'
   },
   marginBottom: {
-    marginBottom: '5em',
+    marginBottom: '5em'
   },
   centerImage: {
     marginLeft: 'auto',
@@ -43,6 +49,14 @@ const style = {
     fontSize: '1.15em'
   }
 };
+
+const Back = () => {
+  return (
+    <aside style={style.backButton}>
+      <Link to="/">&middot; Back &middot;</Link>
+    </aside>
+  );
+}
 
 const SiteENA = () => {
 
@@ -98,6 +112,7 @@ const SiteENA = () => {
           </p>
         </Grid.Column>
       </Grid>
+      <Back />
     </section>
   );
 };
@@ -172,6 +187,7 @@ const SiteUFPA = () => {
           </p>
         </Grid.Column>
       </Grid>
+      <Back />
     </section>
   );
 
@@ -250,6 +266,7 @@ const SiteAPIC = () => {
            </p>
         </Grid.Column>
       </Grid>
+      <Back />
     </section>
   );
 
@@ -333,6 +350,7 @@ const SiteINFOC = () => {
             </p>
         </Grid.Column>
       </Grid>
+      <Back />
     </section>
   );
 
@@ -395,6 +413,7 @@ const SiteTRAVEL = () => {
             <p>This was a fullscreen custom modal I created for this project.</p>
         </Grid.Column>
       </Grid>
+      <Back />
     </section>
   );
 
