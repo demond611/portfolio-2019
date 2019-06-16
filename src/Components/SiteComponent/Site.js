@@ -7,25 +7,26 @@ import {
 } from                'semantic-ui-react';
 import { Link } from  'react-router-dom';
 
-import ena_1 from     './ena_1.png';
-import ena_2 from     './ena_2.png';
-import ena_3 from     './ena_3.png';
-import apic_1 from    './apic_1.png';
-import apic_2 from    './apic_2.png';
-import apic_3 from    './apic_3.png';
-import apic_4 from    './apic_4.png';
-import apic_5 from    './apic_5.png';
-import ufpa_1 from    './ufpa_1.png';
-import ufpa_2 from    './ufpa_2.png';
-import ufpa_3 from    './ufpa_3.png';
-import ufpa_4 from    './ufpa_4.png';
-import travel_1 from  './travel_1.png';
-import travel_2 from  './travel_2.png';
-import travel_3 from  './travel_3.png';
-import infoc_1 from   './infoc_1.png';
-import infoc_2 from   './infoc_2.png';
-import infoc_3 from   './infoc_3.png';
-import infoc_4 from   './infoc_4.png';
+import ena_1 from       './ena_1.png';
+import ena_2 from       './ena_2.png';
+import ena_3 from       './ena_3.png';
+import apic_1 from      './apic_1.png';
+import apic_2 from      './apic_2.png';
+import apic_3 from      './apic_3.png';
+import apic_4 from      './apic_4.png';
+import apic_5 from      './apic_5.png';
+import ufpa_1 from      './ufpa_1.png';
+import ufpa_2 from      './ufpa_2.png';
+import ufpa_3 from      './ufpa_3.png';
+import ufpa_4 from      './ufpa_4.png';
+import travel_1 from    './travel_1.png';
+import travel_2 from    './travel_2.png';
+import travel_3 from    './travel_3.png';
+import infoc_1 from     './infoc_1.png';
+import infoc_2 from     './infoc_2.png';
+import infoc_3 from     './infoc_3.png';
+import infoc_4 from     './infoc_4.png';
+import metronome_1 from './metronome_1.png'
 
 const style = {
   h2: {
@@ -55,6 +56,54 @@ const Back = () => {
     <aside style={style.backButton}>
       <Link to="/">&middot; Back &middot;</Link>
     </aside>
+  );
+}
+
+const Metronome = () => {
+
+  const setType = [
+    "REACT", "JAVASCRIPT", "ES6"
+  ];
+  const setColor = [
+    "teal", "purple", null
+  ];
+
+  return (
+    <section className="ui container">
+      <Grid>
+        <Grid.Column width={16}>
+          <Header as='h2'
+            content='Metronome'
+            style={style.h2}
+            textAlign='center'
+          />
+        </Grid.Column>
+        <Grid.Column
+          width={16}
+          style={style.marginBottom}
+          textAlign='center'
+        >
+          {setColor.map((color, index) =>
+            (<Label key={index} color={color}>{setType[index]}</Label>))
+          }
+        </Grid.Column>
+        <Grid.Column width={16}>
+          <Image style={style.centerImage} src={metronome_1} />
+        </Grid.Column>
+        <Grid.Column
+          width={16}
+          style={style.textSpace}
+          textAlign='justified'
+        >
+          <p>This was a little app I worked on to get some more experience working with React.
+            With this project I learned about loading sounds into the app, working with initializing
+            state and manipulating setState, how to trigger actions after state is set and input
+            components and handling changes in React.
+          </p>
+        </Grid.Column>
+      </Grid>
+      <Back />
+    </section>
   );
 }
 
@@ -422,7 +471,9 @@ const SiteTRAVEL = () => {
 const Site = (props) => {
   const page_id = props.match.params.pageId;
 
-  if (page_id === "ena19") {
+  if (page_id === "metronome"){
+    return <Metronome />
+  } else if (page_id === "ena19") {
     return <SiteENA />
   } else if (page_id === "travel") {
     return <SiteTRAVEL />

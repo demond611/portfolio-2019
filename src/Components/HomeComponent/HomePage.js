@@ -17,6 +17,7 @@ import apic_header from          './apic_header.png';
 import ufpa_header from          './ufpa_header.png';
 import tide_header from          './tide_header.png';
 import travel_header from        './travel_header.png';
+import metronome from            './metronome.png';
 
 const style = {
   h1: {
@@ -36,6 +37,16 @@ const style = {
 };
 
 const showInfo = [
+  {
+    img: metronome,
+    itemHeader: "Metronome",
+    avail: null,
+    siteLink: "https://agile-wave-53277.herokuapp.com/",
+    tech: [
+      "REACT", "JAVASCRIPT", "ES6"
+    ],
+    id: "metronome"
+  },
   {
     img: ena_header,
     itemHeader: "ENA Fall Regional Symposium",
@@ -151,11 +162,11 @@ const ItemLayout = (props) => {
             )}
           </Item.Extra>
           <Item.Extra>
-            <div className='extraLink'> Website:
-                <a href={item.siteLink}
-                  target='_blank'
-                  rel='noopener noreferrer'> {item.siteLink}
-                </a>
+            <div className='extraLink'> {item.siteLink ? "Website:":""}
+              <a href={item.siteLink}
+                target='_blank'
+                rel='noopener noreferrer'> {item.siteLink}
+              </a>
             </div>
           </Item.Extra>
         </Item.Content>
