@@ -36,91 +36,30 @@ const style = {
   }
 };
 
-const showInfo = [
-  {
-    img: metronome,
-    itemHeader: "Metronome",
-    avail: null,
-    siteLink: "https://agile-wave-53277.herokuapp.com/",
-    tech: [
-      "REACT", "JAVASCRIPT", "ES6"
-    ],
-    id: "metronome"
-  },
-  {
-    img: ena_header,
-    itemHeader: "ENA Fall Regional Symposium",
-    avail: "This website will only be available until October 1, 2020",
-    siteLink: "https://www.compusystems.com/servlet/ar?evt_uid=311",
-    tech: [
-      "HTML5", "CSS3", "BOOTSTRAP 3", "JAVASCRIPT", "JAVA", "JSP", "SQL"
-    ],
-    id: "ena19"
-  },
-  {
-    img: travel_header,
-    itemHeader: "Travel Site",
-    avail: null,
-    siteLink: "https://demond611.github.io/travel-site/",
-    tech: [
-      "OBJECT ORIENTED JAVASCRIPT", "BEM CSS", "NODE", "GULP", "CSS3", "HTML5"
-    ],
-    id: "travel"
-  },
-  {
-    img: tide_header,
-    itemHeader: "InfoComm 2019 TIDE",
-    avail: "This website will only be available until May 8, 2020",
-    siteLink: "https://www.compusystems.com/servlet/ar?evt_uid=208&site=TIDE",
-    tech: [
-      "HTML5", "CSS3", "BOOTSTRAP 4", "JAVASCRIPT", "JAVA", "JSP", "SQL"
-    ],
-    id: "infoc19"
-  },
-  {
-    img: apic_header,
-    itemHeader: "APIC Annual Conference 2019",
-    avail: "This website will only be available until May 12, 2020",
-    siteLink: "https://www.compusystems.com/servlet/ar?evt_uid=865",
-    tech: [
-      "HTML5", "CSS3", "BOOTSTRAP 3", "JAVASCRIPT", "JAVA", "JSP", "SQL"
-    ],
-    id: "apic19"
-  },
-  {
-    img: ufpa_header,
-    itemHeader: "United Fresh 2019 Convention & Expo",
-    avail: "This website will only be available until May 9, 2020",
-    siteLink: "https://www.compusystems.com/servlet/ar?evt_uid=457",
-    tech: [
-      "HTML5", "CSS3", "BOOTSTRAP 3", "JAVASCRIPT", "JAVA", "JSP", "SQL"
-    ],
-    id: "ufpa19"
-  }
-];
-
-const ItemLayout = (props) => {
-  const items = props.showItems.map((item, index) => {
-    return (
-      <Item key={index}>
-        <Item.Image src={item.img} />
-        <Item.Content>
-          <Item.Header as='h3'>{item.itemHeader}</Item.Header>
-          <Item.Meta>
-            <span>{item.avail}</span>
-          </Item.Meta>
-          <Item.Description></Item.Description>
-          <Item.Extra>
-            <Route path="/sites">
-              <Link key={item.id} to={`/sites/${item.id}`}>
-                <Button floated='right' primary>
-                  More Info <Icon name='chevron right' />
-                </Button>
-              </Link>
-            </Route>
-            {item.tech.map((techItem, a) => {
+const ProjectItem = props => {
+  return (
+    <Item>
+      <Item.Image src={props.headerSrc} />
+      <Item.Content>
+        <Item.Header as='h3'>{props.header}</Item.Header>
+        <Item.Meta>
+          <span>{props.metaData}</span>
+        </Item.Meta>
+        <Item.Extra>
+          <Route path="/sites">
+            <Link to={`/sites/${props.siteId}`}>
+              <Button
+                floated='right'
+                primary
+              >
+                More Info <Icon name='chevron right' />
+              </Button>
+            </Link>
+          </Route>
+          {
+            (props.label).map((tech, index) => {
               let labelColor = "";
-              switch (techItem){
+              switch (tech){
                 case 'HTML5':
                   labelColor = "red";
                   break;
@@ -157,24 +96,22 @@ const ItemLayout = (props) => {
                 default:
                   labelColor = null;
               }
-              return <Label key={a} color={labelColor}>{techItem}</Label>
-              }
-            )}
-          </Item.Extra>
-          <Item.Extra>
-            <div className='extraLink'> {item.siteLink ? "Website:":""}
-              <a href={item.siteLink}
-                target='_blank'
-                rel='noopener noreferrer'> {item.siteLink}
-              </a>
-            </div>
-          </Item.Extra>
-        </Item.Content>
-      </Item>
-    )
-  });
-      
-  return <React.Fragment>{items}</React.Fragment>
+              return <Label key={index} color={labelColor}>{tech}</Label>;
+            })
+          }
+        </Item.Extra>
+        <Item.Extra>
+          <div className='extraLink'> Website:
+            <a
+              href={props.link}
+              target='_blank'
+              rel='noopener noreferrer'> {props.link}
+            </a>
+          </div>
+        </Item.Extra>
+      </Item.Content>
+    </Item>
+  );
 };
 
 class HomePage extends Component {
@@ -198,7 +135,54 @@ class HomePage extends Component {
         {this.renderWebHeading()}
         <Container>
           <Item.Group divided>
-            <ItemLayout showItems={showInfo} />
+            <ProjectItem
+              siteId="metronome"
+              header="Metronome"
+              headerSrc={metronome}
+              metaData=""
+              label={['REACT', 'JAVASCRIPT', 'ES6']}
+              link="https://agile-wave-53277.herokuapp.com/"
+            />
+            <ProjectItem
+              siteId="ena19"
+              header="ENA Fall Regional Symposium"
+              headerSrc={ena_header}
+              metaData="This website will only be available until October 1, 2020"
+              label={['HTML5', 'CSS3', 'BOOTSTRAP 3', 'JAVASCRIPT', 'JAVA', 'JSP', 'SQL']}
+              link="https://www.compusystems.com/servlet/ar?evt_uid=311"
+            />
+            <ProjectItem
+              siteId="travel"
+              header="Travel Site"
+              headerSrc={travel_header}
+              metaData=""
+              label={['OBJECT ORIENTED JAVASCRIPT', 'BEM CSS', 'NODE', 'GULP', 'CSS3', 'HTML5']}
+              link="https://demond611.github.io/travel-site/"
+            />
+            <ProjectItem
+              siteId="infoc19"
+              header="InfoComm 2019 TIDE"
+              headerSrc={tide_header}
+              metaData="This website will only be available until May 8, 2020"
+              label={['HTML5', 'CSS3', 'BOOTSTRAP 4', 'JAVASCRIPT', 'JAVA', 'JSP', 'SQL']}
+              link="https://www.compusystems.com/servlet/ar?evt_uid=208&site=TIDE"
+            />
+            <ProjectItem
+              siteId="apic19"
+              header="APIC Annual Conference 2019"
+              headerSrc={apic_header}
+              metaData="This website will only be available until May 12, 2020"
+              label={['HTML5', 'CSS3', 'BOOTSTRAP 3', 'JAVASCRIPT', 'JAVA', 'JSP', 'SQL']}
+              link="https://www.compusystems.com/servlet/ar?evt_uid=865"
+            />
+            <ProjectItem
+              siteId="ufpa19"
+              header="United Fresh 2019 Convention & Expo"
+              headerSrc={ufpa_header}
+              metaData="This website will only be available until May 9, 2020"
+              label={['HTML5', 'CSS3', 'BOOTSTRAP 3', 'JAVASCRIPT', 'JAVA', 'JSP', 'SQL']}
+              link="https://www.compusystems.com/servlet/ar?evt_uid=457"
+            />
           </Item.Group>
         </Container>
       </section>
