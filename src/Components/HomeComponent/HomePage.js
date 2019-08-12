@@ -18,6 +18,7 @@ import ufpa_header from          './ufpa_header.png';
 import tide_header from          './tide_header.png';
 import travel_header from        './travel_header.png';
 import metronome from            './metronome.png';
+import youtube_header from       './youtube_header.png';
 
 const style = {
   h1: {
@@ -37,17 +38,18 @@ const style = {
 };
 
 const ProjectItem = props => {
+  const { headerSrc, metaData, siteId, header, link } = props;
   return (
     <Item>
-      <Item.Image src={props.headerSrc} />
+      <Item.Image src={headerSrc} />
       <Item.Content>
-        <Item.Header as='h3'>{props.header}</Item.Header>
+        <Item.Header as='h3'>{header}</Item.Header>
         <Item.Meta>
-          <span>{props.metaData}</span>
+          <span>{metaData}</span>
         </Item.Meta>
         <Item.Extra>
           <Route path="/sites">
-            <Link to={`/sites/${props.siteId}`}>
+            <Link to={`/sites/${siteId}`}>
               <Button
                 floated='right'
                 primary
@@ -93,6 +95,9 @@ const ProjectItem = props => {
                 case 'REACT':
                   labelColor = "teal";
                   break;
+                case 'ES6':
+                  labelColor = "violet";
+                  break;
                 default:
                   labelColor = null;
               }
@@ -103,9 +108,9 @@ const ProjectItem = props => {
         <Item.Extra>
           <div className='extraLink'> Website:
             <a
-              href={props.link}
+              href={link}
               target='_blank'
-              rel='noopener noreferrer'> {props.link}
+              rel='noopener noreferrer'> {link}
             </a>
           </div>
         </Item.Extra>
@@ -113,6 +118,10 @@ const ProjectItem = props => {
     </Item>
   );
 };
+
+// Main portfolio link
+// https://robert-walker-portfolio-2019.herokuapp.com/
+// https://radiant-badlands-30797.herokuapp.com/
 
 class HomePage extends Component {
   renderHomeHeading (){
@@ -136,12 +145,21 @@ class HomePage extends Component {
         <Container>
           <Item.Group divided>
             <ProjectItem
+              siteId="youtube"
+              header="Youtube API"
+              headerSrc={youtube_header}
+              metaData=""
+              label={['REACT', 'JAVASCRIPT', 'ES6', 'API', 'CSS3']}
+              link="https://react-youtube-api-project.herokuapp.com/"
+            />
+            <ProjectItem
               siteId="metronome"
               header="Metronome"
               headerSrc={metronome}
               metaData=""
               label={['REACT', 'JAVASCRIPT', 'ES6']}
-              link="https://agile-wave-53277.herokuapp.com/"
+              //link="https://agile-wave-53277.herokuapp.com/"
+              link="https://react-metronome-project.herokuapp.com/"
             />
             <ProjectItem
               siteId="ena19"

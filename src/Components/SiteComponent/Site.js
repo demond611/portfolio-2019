@@ -26,7 +26,8 @@ import infoc_1 from     './infoc_1.png';
 import infoc_2 from     './infoc_2.png';
 import infoc_3 from     './infoc_3.png';
 import infoc_4 from     './infoc_4.png';
-import metronome_1 from './metronome_1.png'
+import metronome_1 from './metronome_1.png';
+import youtube_1 from   './youtube_1.png';
 
 const style = {
   h2: {
@@ -56,6 +57,54 @@ const Back = () => {
     <aside style={style.backButton}>
       <Link to="/">&middot; Back &middot;</Link>
     </aside>
+  );
+}
+
+const Youtube = () => {
+
+  const setType = [
+    "REACT", "JAVASCRIPT", "ES6", "API", "CSS3"
+  ];
+  const setColor = [
+    "teal", "purple", "violet", null, "blue"
+  ];
+
+  return (
+    <section className="ui container">
+      <Grid>
+        <Grid.Column width={16}>
+          <Header as='h2'
+            content='Youtube API'
+            style={style.h2}
+            textAlign='center'
+          />
+        </Grid.Column>
+        <Grid.Column
+          width={16}
+          style={style.marginBottom}
+          textAlign='center'
+        >
+          {setColor.map((color, index) =>
+            (<Label key={index} color={color}>{setType[index]}</Label>))
+          }
+        </Grid.Column>
+        <Grid.Column width={16}>
+          <Image style={style.centerImage} src={youtube_1} />
+        </Grid.Column>
+        <Grid.Column
+          width={16}
+          style={style.textSpace}
+          textAlign='justified'
+        >
+          <p>This was a little app I worked on to get some more experience working with React.
+            With this project I learned about using Axios to write API requests to a youtube endpoint.
+            This project also focused on manipulating state, returning 'refs' of React based components
+            and returning the correct 'this' context from function calls.
+          </p>
+        </Grid.Column>
+      </Grid>
+      <Back />
+    </section>
   );
 }
 
@@ -471,7 +520,9 @@ const SiteTRAVEL = () => {
 const Site = (props) => {
   const page_id = props.match.params.pageId;
 
-  if (page_id === "metronome"){
+  if (page_id === "youtube"){
+    return <Youtube />
+  } else if (page_id === "metronome"){
     return <Metronome />
   } else if (page_id === "ena19") {
     return <SiteENA />
